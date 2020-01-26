@@ -9,7 +9,7 @@
 <body>
     <?php
     echo "<h1>Happy Birthday</h1>"
-    echo "<img src="img/image.jpg" alt="shitty birthday cake"> 
+    echo "<img src="img/image.png" alt="shitty birthday cake"> 
     ?>
 </body>
 </html>
