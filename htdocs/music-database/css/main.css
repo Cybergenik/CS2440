@@ -5,7 +5,7 @@ html {
 }
 
 #bg {
-    background-image: url('../images/bg.gif');
+    background-image: url('../img/bg.gif');
     background-repeat: repeat;
 }
 
@@ -25,4 +25,10 @@ a:hover {
     margin-left: 5%;
     border: none;
     border-radius: 5px;
+}
+
+.mybutton:hover {
+    background: white;
+    font-size: 26px;
+    margin-top: 29px;
 }
