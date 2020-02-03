@@ -35,6 +35,7 @@ a:hover {
 body {
     font-family: 'Roboto';
     font-size: 25px;
+    color: aliceblue;
 }
 
 figure h1{
@@ -43,4 +44,16 @@ figure h1{
     text-align: center;
     font-family: 'Roboto';
     font-size: 30px;
+    color: aliceblue;
 }
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+  }
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
