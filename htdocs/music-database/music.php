@@ -4,12 +4,12 @@
   <link rel="stylesheet" href="css/main.css">
   </head>
   <body id='bg'>
-    <h1>Music Albums I like:</h1>
+    <h1>Luciano Remes</h1>
    <?php
      $album = array("The Black Parade By My Chemical Romance", "American Idiot By Green Day", "Dookie By Green Day", "21st Century Breakdown By Green Day", "Nimrod By Green Day", "Night at the Opera By Queen", "Innuendo By Queen", "Nevermind by Nirvana", "In Utero by Nirvana", "Abbey Road By The Beatles");
      echo "<table>";
      echo "<tr>";
-     echo "<th>Album:</th>";
+     echo "<th>Albums I like:</th>";
      echo "</tr>";
      foreach ($album as $i) 
      {
