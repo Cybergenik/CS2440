@@ -5,6 +5,6 @@
   </head>
   <body id='bg'>
     <h1>Assignment #2</h1>
-    <a class="mybutton" href="#about">Music Albums</a>
+    <a class="mybutton" href="music.php">Music Albums</a>
   </body>
 </html>
