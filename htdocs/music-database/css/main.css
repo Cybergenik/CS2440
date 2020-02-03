@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+    scroll-behavior: smooth;
+}
+
+#bg {
+    background-image: url('../images/bg.gif');
+    background-repeat: repeat;
+}
+
+a:hover {
+    color: #ff7a7a;
+}
+
+.mybutton {
+    font-family: 'Roboto';
+    font-size: 24px;
+    color: #151D21;
+    background: #ff7a7a;
+    display: inline-flex;
+    padding: 6px;
+    margin-top: 30px;
+    margin-right: 5%;
+    margin-left: 5%;
+    border: none;
+    border-radius: 5px;
+}
