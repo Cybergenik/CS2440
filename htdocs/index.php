@@ -6,5 +6,6 @@
     <p>Throughout the semester, various PHP projects will be added to this page.</p>
 
     <p>Assignment1: <a href="happy-birthday/index.php">Happy Birthday</a></p>
+    <p>Assignment1: <a href="music-database/index.php">Music Database</a></p>
   </body>
 </html>

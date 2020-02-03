@@ -32,3 +32,15 @@ a:hover {
     font-size: 26px;
     margin-top: 29px;
 }
+body {
+    font-family: 'Roboto';
+    font-size: 25px;
+}
+
+figure h1{
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 30px;
+}
