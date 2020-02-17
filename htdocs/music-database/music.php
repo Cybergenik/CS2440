@@ -5,6 +5,7 @@
   </head>
   <body id='bg'>
     <h1>Luciano Remes</h1>
+    <a class="mybutton" href="index.php">Back</a>
    <?php
      $album = array("The Black Parade By My Chemical Romance", "American Idiot By Green Day", "Dookie By Green Day", "21st Century Breakdown By Green Day", "Nimrod By Green Day", "Night at the Opera By Queen", "Innuendo By Queen", "Nevermind by Nirvana", "In Utero by Nirvana", "Abbey Road By The Beatles");
      echo "<table>";
