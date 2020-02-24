@@ -34,8 +34,11 @@
             }
         }
         if(!$x && !empty($error)){
-            echo "You need to fill out all the form:";
+            echo "You need to fill out all the form:<br>";
             foreach ($error as $i){
+                if (!isset($i))
+                    echo "<p>".$i."</p>";
+                    echo "<script> document.getElementsById(".$i.").InnerHTML = 'FILL THIS' </script>";
                 echo $i." ";
             }
         }
@@ -50,27 +53,27 @@
             echo '<script>putter()</script>';
             echo '<h1>Order a T-shirt</h1>';
             echo '<form class="flex-container" action="products.php" method="post">';
-            echo '    <select class="mybutton" name="band">';
+            echo '    <select class="mybutton" name="band" id="bands">';
             echo '        <option disabled'; if($bvalue == 0) echo"selected"; echo ' value hidden> -- select band -- </option>';
             echo '        '.display($bands).'';
             echo '    </select>';
-            echo '    <select class="mybutton" name="color">';
+            echo '    <select class="mybutton" name="color" id="tcolor">';
             echo '        <option disabled '; if($bvalue == 0) echo"selected"; echo ' value hidden> -- select color -- </option>';
             echo '        '.display($tcolor).'';
             echo '    </select>';
-            echo '    <select class="mybutton" name="size">';
+            echo '    <select class="mybutton" name="size" id="tsize">';
             echo '        <option disabled '; if($bvalue == 0) echo"selected"; echo ' value hidden> -- select size -- </option>';
             echo '        '.display($tsize).'';
             echo '    </select>';
-            echo '    <select class="mybutton" name="style">';
+            echo '    <select class="mybutton" name="style" id="tstyle">';
             echo '        <option disabled '; if($bvalue == 0) echo"selected"; echo ' value hidden> -- select style -- </option>';
             echo '        '.display($tstyle).'';
             echo '    </select>';
-            echo '    <input class="myin" class="input" name="fname" type="text" placeholder="First Name" value="'. $fvalue .'">';
-            echo '    <input class="myin" class="input" name="lname" type="text" placeholder="Last Name" value="'. $lvalue .'">';
-            echo '    <input class="myin" class="input" name="email" type="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" value="'. $evalue .'">';
-            echo '    <input class="myin" class="input" name="phone" type="tel" placeholder="Phone Number " pattern="[0-9]{3}[0-9]{3}[0-9]{4}" value="'. $pvalue .'">';
-            echo '    <input class="myin" class="input" name="mailing" type="text" placeholder="Mailing Address" value="'. $mvalue .'">';
+            echo '    <input class="myin" class="input" name="fname" id="fname" type="text" placeholder="First Name" value="'. $fvalue .'">';
+            echo '    <input class="myin" class="input" name="lname" id="lname" type="text" placeholder="Last Name" value="'. $lvalue .'">';
+            echo '    <input class="myin" class="input" name="email" id="email" type="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" value="'. $evalue .'">';
+            echo '    <input class="myin" class="input" name="phone" id="phone" type="tel" placeholder="Phone Number " pattern="[0-9]{3}[0-9]{3}[0-9]{4}" value="'. $pvalue .'">';
+            echo '    <input class="myin" class="input" name="mailing" id="mailing" type="text" placeholder="Mailing Address" value="'. $mvalue .'">';
             echo '    <div class="flex-container2">';
             echo '    <input class="mybutton" type="reset">';
             echo '    <input class="mybutton" onclick="saver()" type="submit">';
