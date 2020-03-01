@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+  <header>
+  <link rel="stylesheet" href="css/main.css">
+  </header>
   <head> Luciano Remes </head>
   <body id='bg'>
     <h1>This is Luciano Remes' PHP page</h1>
