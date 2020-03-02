@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <title>Document</title>
 </head>
-<body>
+<body id='bg'>
     <?php
         if (!empty($_POST['email']) && !empty($_POST['phone'])){
             $email = $_POST['email'];
@@ -24,8 +25,7 @@
             elseif (preg_match($pregex ,$phone) && preg_match($eregex, $email)){
                 echo '<h1>Data Validated</h1>';
                 echo '<h4>Thank you</h4>';
-                echo $email;
-                echo $phone;
+                echo $email." | ".$phone;
             }
         }
         elseif (empty($_POST['email']) && !empty($_POST['phone'])){
