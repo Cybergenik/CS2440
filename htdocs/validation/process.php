@@ -11,7 +11,7 @@
             $email = $_POST['email'];
             $phone = $_POST['phone'];
             $eregex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
-            $pregex = '/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/';
+            $pregex = '/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/';
             if (!preg_match($eregex ,$email) && preg_match($pregex, $phone)) {
                 header('location: index.php?err=4&phone='.$phone);
             }
