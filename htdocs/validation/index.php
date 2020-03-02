@@ -14,19 +14,19 @@
     if (isset($_GET['phone'])) $pvalue = $_GET['phone']; else $pvalue = '';
 
     if ($_GET['err'] == 1){
-      echo "<h4 style='font-color: red'>Please fill out the email field</h4>";
+      echo "<h4 style='font-color: red'>Please fill Email field</h4>";
     }
     elseif ($_GET['err'] == 2){
-      echo "<h4 style='font-color: red'>Please fill out the phone field</h4>";
+      echo "<h4 style='font-color: red'>Please fill Phone field</h4>";
     }
     elseif ($_GET['err'] == 3){
-      echo "<h4 style='font-color: red'>Please fill out both fields</h4>";
+      echo "<h4 style='font-color: red'>Please fill out Both fields</h4>";
     }
     elseif ($_GET['err'] == 4){
-      echo "<h4 style='font-color: red'>Invalid Email fields</h4>";
+      echo "<h4 style='font-color: red'>Invalid Email field</h4>";
     }
     elseif ($_GET['err'] == 5){
-      echo "<h4 style='font-color: red'>Invalid Phone</h4>";
+      echo "<h4 style='font-color: red'>Invalid Phone field</h4>";
     }
     elseif ($_GET['err'] == 6){
       echo "<h4 style='font-color: red'>Both are Invalid</h4>";
