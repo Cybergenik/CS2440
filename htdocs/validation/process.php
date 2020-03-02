@@ -12,7 +12,7 @@
             $phone = $_POST['phone'];
         }
         else{
-           header('location: index.php?err=1&email='.$email.'&phone='.$phone);
+           header('location: index.php?email='.$email.'&phone='.$phone);
             if (empty($_POST['email'])){
             echo "<script>alert('Please fill out the email field')</script>";
             }
