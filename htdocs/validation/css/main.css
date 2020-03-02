@@ -75,11 +75,8 @@ td, th {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 25%;
     flex-direction: column;
-    background-color: navy;
     padding-bottom: 20px;
-    position: absolute;
     overflow: hidden;
 }
 
@@ -95,6 +92,4 @@ td, th {
     flex-wrap: nowrap;
     justify-content: right;
     align-items: center;
-    width: 75%;
-    background-color: navy;
 }
