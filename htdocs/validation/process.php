@@ -23,9 +23,11 @@
                 header('location: index.php?err=6');
             }
             elseif (preg_match($pregex ,$phone) && preg_match($eregex, $email)){
+                echo '<div class="flex-container2">';
                 echo '<h1>Data Validated</h1>';
                 echo '<h4>Thank you</h4>';
                 echo $email." | ".$phone;
+                echo '</div>';
             }
         }
         elseif (empty($_POST['email']) && !empty($_POST['phone'])){
