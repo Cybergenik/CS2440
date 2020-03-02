@@ -16,6 +16,15 @@
     if (isset($_GET['email'])) $evalue = $_GET['email']; else $evalue = '';
     if (isset($_GET['phone'])) $pvalue = $_GET['phone']; else $pvalue = '';
 
+    if (empty($_POST['email'])){
+      echo "<h4 style='font-color: red'>Please fill out the email field</h4>";
+    }
+    elseif (empty($_POST['phone'])){
+      echo "<h4 style='font-color: red'>Please fill out the phone field</h4>";
+    }
+    else{
+      echo "<h4 style='font-color: red'>Please fill out all fields</h4>";
+    }
     echo '<h1>Data Validation</h1>';
     echo '<form class="flex-container" action="process.php" method="post">';
     echo '    <input class="myin" class="input" name="email" id="email" type="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" value="'. $evalue .'">';
