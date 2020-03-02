@@ -33,8 +33,8 @@
     }
 
     echo '<form class="flex-container" action="process.php" method="post">';
-    echo '    <input class="myin" class="input" name="email" id="email" type="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" value="'. $evalue .'">';
-    echo '    <input class="myin" class="input" name="phone" id="phone" type="tel" placeholder="Phone Number " pattern="[0-9]{3}[0-9]{3}[0-9]{4}" value="'. $pvalue .'">';
+    echo '    <input class="myin" class="input" name="email" id="email" type="email" placeholder="email@email.com" value="'. $evalue .'">';
+    echo '    <input class="myin" class="input" name="phone" id="phone" type="tel" placeholder="123-123-1234"  value="'. $pvalue .'">';
     echo '    <div class="flex-container2">';
     echo '    <input class="mybutton" type="reset">';
     echo '    <input class="mybutton" type="submit">';
