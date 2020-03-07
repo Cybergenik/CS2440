@@ -20,7 +20,7 @@ a:hover {
     background: #ff7a7a;
     display: inline-flex;
     padding: 6px;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-right: 5%;
     margin-left: 5%;
     border: none;
@@ -41,8 +41,8 @@ a:hover {
 
 .mybutton:hover {
     background: white;
-    font-size: 26px;
-    margin-top: 29px;
+    font-size: 25px;
+    margin-top: 12px;
 }
 body {
     font-family: 'Roboto';
@@ -52,7 +52,6 @@ body {
 
 h1{
     margin: auto;
-    padding: 5px;
     text-align: center;
     font-family: 'Roboto';
     font-size: 50px;
