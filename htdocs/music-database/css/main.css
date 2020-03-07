@@ -58,6 +58,13 @@ h1{
     font-size: 50px;
     color: aliceblue;
 }
+h2{
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+    font-family: 'Roboto';
+    color: aliceblue;
+}
 
 table {
     border-collapse: collapse;
@@ -75,11 +82,8 @@ td, th {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 25%;
     flex-direction: column;
-    background-color: navy;
     padding-bottom: 20px;
-    position: absolute;
     overflow: hidden;
 }
 
@@ -90,11 +94,7 @@ td, th {
     text-align: center;
 }
 .flex-container2 {
-    text-align: right;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: right;
     align-items: center;
-    width: 75%;
-    background-color: navy;
 }
