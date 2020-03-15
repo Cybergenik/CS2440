@@ -11,8 +11,8 @@
         echo '<h1>Insecure password</h1>';
         //Read file and extract credentials
         $auth = Array();
-        $f = fopen('users.txt', 'r');
-        $string = fread($f, filesize('users.txt'));
+        $f = fopen('includes/users.txt', 'r');
+        $string = fread($f, filesize('includes/users.txt'));
         $strings = explode('||>><<||', $string);
         foreach($strings as $i){
             $temp = explode(',', $i);
