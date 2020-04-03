@@ -82,12 +82,11 @@ td, th {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-bottom: 20px;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .flex-container > div {
-    text-align: center;
+    text-align: left;
 }
 .input {
     text-align: center;
