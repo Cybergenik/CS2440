@@ -32,10 +32,8 @@ a:hover {
     color: #151D21;
     display: inline-flex;
     padding: 6px;
-    margin-top: 30px;
-    margin-right: 5%;
-    margin-left: 5%;
-    border: none;
+    margin-bottom: 30px;
+    border: 2px solid gray;
     border-radius: 5px;
 }
 

@@ -8,7 +8,7 @@
 </head>
 <body id="bg">
     <?php
-        echo '<h1>Less-Insecure Password</h1>';
+        echo '<h1>Secure Login</h1>';
         //Read file and extract credentials
         $auth = Array();
         
@@ -37,8 +37,9 @@
             }
             //validate username and password match
             else{
-                $key = array_keys($auth, $_POST['pass']);
-                if (implode($key) == $_POST['user'] && $auth[implode($key)] == $_POST['pass']){
+                include_once('hash.php');
+                $key = array_keys($auth, hasher($_POST['user'], $_POST['pass']));
+                if (implode($key) == $_POST['user'] && $auth[implode($key)] == hasher($_POST['user'], $_POST['pass'])){
                     $x = true;
                 }
                 else {
@@ -47,11 +48,15 @@
             }
         }
         //Display Form
+        if(!empty($_GET)){
+            if($_GET['acc'] == 1)
+                echo '<div class="flex-container"><h3>Account Created, please login</h3></div>';
+        }
         if (empty($_POST) || !$x){
             echo '
             <form class="flex-container" action="index.php" method="post">
             <label for="user">Username:</label>        
-                <input class="myin" class="input" name="user" id="user" type="text" placeholder="Username"><br>
+                <input class="myin" class="input" name="user" id="user" type="text" placeholder="Username">
             <label for="pass">Password:</label>
                 <input class="myin" class="input" name="pass" id="pass" type="password" placeholder="Password">
                 <div class="flex-container2">
@@ -67,6 +72,7 @@
         //Display Access Granted
         elseif ($x){
             echo "<br><br><h2 style='color: green'>Access Granted</h2>";
+            echo '<a class="mybutton" href="index.php">Back</a>';
             $conn->close();
         }
 
