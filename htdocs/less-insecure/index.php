@@ -23,7 +23,6 @@
         $sql = "SELECT * FROM notsecure";
         $results = mysqli_query($conn, $sql);
 
-        $auth = Array();
         while($row = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
             $auth += Array($row['username'] => $row['password']);
         }

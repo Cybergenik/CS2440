@@ -9,8 +9,6 @@
 <body id="bg">
     <?php
         echo '<h1>Secure Login</h1>';
-        //Read file and extract credentials
-        $auth = Array();
         
         $servername = "us-cdbr-iron-east-04.cleardb.net";
         $username = "bc5c6e77231e1a";
