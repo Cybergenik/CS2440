@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/match.js"></script>
-    <title>Insecure Password</title>
+    <title>Create Account</title>
 </head>
 <body id="bg">
     <?php
@@ -72,14 +72,15 @@
             <label for="user">Username:</label>        
                 <input class="myin" class="input" name="user" id="user" type="text" placeholder="Username" value="'.$uvalue.'">
             <label for="pass">Password:</label>
-                <input class="myin" class="input" name="pass" id="pass" onkeyup="checker()" type="password" placeholder="Password" value="'.$pvalue.'">
+                <input class="myin" class="input" name="pass" id="pass" onkeyup="checker()" type="password" pattern="(?=.*\d).{8,}" title="Must contain at least one number and be at least 8 or more characters" placeholder="Password" value="'.$pvalue.'">
             <label for="vpass"> Verify Password:</label>
-                <p id="warning" style="color: red" hidden>No Match</p>
+                <p id="warning" style="color: red; font-size: 18px;" hidden>No Match</p>
+                <p id="pass_war" style="color: red; font-size: 18px;" hidden>Password must be at least 8 characters long and contain atleast 1 number</p>
                 <input class="myin" class="input" name="vpass" id="vpass" onkeyup="checker()" type="password" placeholder="Password" value="'.$vpvalue.'">
             <label for="secret">Secret Code:</label>
                 <input class="myin" class="input" name="secret" id="secret" type="password" placeholder="Secret Code" value="'.$svalue.'">    
                 <div class="flex-container2">
-                <input class="mybutton" type="reset">
+                <input class="mybutton" onclick="reset_form()" type="reset">
                 <input id="submit" class="mybutton" type="submit" value="Create Account">
                 </div>
             </form>
