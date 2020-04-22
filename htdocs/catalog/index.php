@@ -7,9 +7,16 @@
     <title>Insecure Password</title>
 </head>
 <body id="bg">
-    <?php
-        echo '<h1>Secure Login</h1>';
-        
+    <h1 class="banner"><span>Cyber's Gaming Store</span></h1>
+    <div class="banner-nav">
+        <a href="index.php">Login</a>
+        <a href="create-account.php">Create-Account</a>
+        <a href="catalog.php">Products</a>
+        <a href="logout.php">Logout</a>
+        <a href="cart.php" style="padding: 1.6%; margin-left: 10%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
+    </div>
+    <br>
+    <?php        
         $servername = "us-cdbr-iron-east-04.cleardb.net";
         $username = "bc5c6e77231e1a";
         $password = "4350b0ee";

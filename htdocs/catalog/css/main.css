@@ -12,6 +12,33 @@ html {
 a:hover {
     color: #ff7a7a;
 }
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-bottom: 2px solid;
+}
+.banner-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.banner-nav a {
+    text-decoration: none;
+    color: white;
+
+    font-size: 25px;
+    padding: 1% 1%;
+    border-bottom: 2px solid transparent;
+
+    transition: 0.2s ease-out;
+}
+.banner-nav a:hover{
+    border-bottom: 2px solid;
+}
 
 .mybutton {
     font-family: 'Roboto';
@@ -19,6 +46,7 @@ a:hover {
     color: #151D21;
     background: #ff7a7a;
     display: inline-flex;
+    text-align: center;
     padding: 6px;
     margin-top: 5px;
     margin-right: 5%;
@@ -32,7 +60,7 @@ a:hover {
     color: #151D21;
     display: inline-flex;
     padding: 6px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: 2px solid gray;
     border-radius: 5px;
 }
@@ -40,7 +68,7 @@ a:hover {
 .mybutton:hover {
     background: white;
     font-size: 25px;
-    margin-top: 12px;
+    margin-top: 5px;
 }
 body {
     font-family: 'Roboto';
@@ -53,7 +81,7 @@ h1{
     text-align: center;
     font-family: 'Roboto';
     font-size: 50px;
-    padding-top: 50px;
+    padding-top: 20px;
     color: aliceblue;
 }
 h2{
@@ -84,6 +112,14 @@ td, th {
     padding-top: 30px;
     overflow: hidden;
 }
+.flex-catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin: 5% 15% 0% 15%;
+    overflow: hidden;
+}
 
 .flex-container > div {
     text-align: center;
@@ -93,6 +129,22 @@ td, th {
 }
 .flex-container2 {
     display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
-    align-items: center;
+    justify-content: center;
+}
+.flex-product {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+@media screen and (max-width: 600px){
+    .banner-nav{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
