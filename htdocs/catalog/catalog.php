@@ -39,15 +39,12 @@ include_once('includes/product.php');
         echo '
         <div class="card" style="width: 30%; height: 30%; margin-bottom: 10%; transition: 0.2s ease-out;" id="prod'.$i.'">
         <h5 class="card-title" style="color: black; text-align: center; font-size: 25px; border-bottom: 2px solid;">'.$product->getName().'</h5>
-        <img class="card-img-top" style="max-width: 350px; max-height: 250px; align-self: center;" src="'.$product->getImg().'" alt="Product" height="100%" witdth="100%">
-        <div class="card-body">
-            <p class="card-text" style="color: black; font-size: 17px; height: 15%; width: 100%;">'.$product->getDesc().'</p>
-        </div>
+        <img class="card-img-top" style="width: 345px; height: 250px; align-self: center;" src="'.$product->getImg().'" alt="Product" height="100%" witdth="100%">
         <ul class="list-group list-group-flush">
             <li class="list-group-item" style="color: black; text-align: center;">Price: '.$product->getPrice().'</li>
         </ul>
         <div class="card-body">
-            <a href="product.php?prodId='.$i.'" class="mybutton" class="card-link">View product details</a>
+            <a href="product.php?prodId='.$i.'" class="mybutton" class="card-link" style="margin-left: 13%;">View product details</a>
         </div>
         </div>
         ';
