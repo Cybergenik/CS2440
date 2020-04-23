@@ -33,10 +33,6 @@ session_start();
 <?php else :?>
 <?php
 if(!empty($_POST) && !isset($_POST['purchase'])){
-    var_dump($_SESSION['prodid']);
-    #var_dump($_SESSION['name']);
-    #var_dump($_SESSION['price']);
-    #var_dump($_SESSION['qty']);
     echo '<br>';
     foreach($_POST as $id=>$val){   
         #$key = array_search ($id, $_SESSION['prodid']);
