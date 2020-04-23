@@ -40,10 +40,6 @@ session_start();
         $sql = "SELECT * FROM secure";
         $results = mysqli_query($conn, $sql);
 
-        $secret = mysqli_query($conn, "SELECT secret FROM secret ");
-        $secret = mysqli_fetch_assoc($secret);
-        $secret = $secret['secret'];
-
         $auth = Array();
         while($row = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
             $auth += Array($row['username'] => $row['password']);
@@ -52,14 +48,14 @@ session_start();
         $x = false;
         if(!empty($_POST)){
             //Make sure fields are filled
-            if(empty($_POST['user']) || empty($_POST['pass']) || empty($_POST['vpass']) || empty($_POST['secret'])){
+            if(empty($_POST['user']) || empty($_POST['pass']) || empty($_POST['vpass'])){
                 echo "<h4 style='text-align: center'>Please fill out all fields</h4>";
             }
             //validate username and password match
             else{
                 include_once('includes/hash.php');
                 $uexists = array_key_exists($_POST['user'], $auth);
-                if(!$uexists && $_POST['secret'] == $secret){
+                if(!$uexists){
                     $user = $_POST["user"];
                     $pass = hasher($_POST['user'], $_POST['pass']);
                     $sql2 = 'INSERT INTO secure (username, password) VALUES("'.$user.'", "'.$pass.'")';
@@ -69,17 +65,12 @@ session_start();
                 elseif($uexists){
                     echo "<h4 style='text-align: center'>That Username is taken<h4>";
                 }
-                elseif($_POST['secret'] != $secret){
-                    echo "<h4 style='text-align: center'>Secret Code is wrong<h4>";
-                }
             }
         }
 
         if (isset($_POST['user'])) $uvalue = $_POST['user']; else $uvalue = '';
         if (isset($_POST['pass'])) $pvalue = $_POST['pass']; else $pvalue = '';
         if (isset($_POST['vpass'])) $vpvalue = $_POST['vpass']; else $vpvalue = '';
-        if (isset($_POST['secret'])) $svalue = $_POST['secret']; else $svalue = '';
-
         //Display Form
         if (empty($_POST) || !$x){
             echo '
@@ -91,9 +82,7 @@ session_start();
             <label for="vpass"> Verify Password:</label>
                 <p id="warning" style="color: red; font-size: 18px;" hidden>No Match</p>
                 <p id="pass_war" style="color: red; font-size: 18px;" hidden>Password must be at least 8 characters long and contain atleast 1 number</p>
-                <input class="myin" class="input" name="vpass" id="vpass" onkeyup="checker()" type="password" placeholder="Password" value="'.$vpvalue.'">
-            <label for="secret">Secret Code:</label>
-                <input class="myin" class="input" name="secret" id="secret" type="password" placeholder="Secret Code" value="'.$svalue.'">    
+                <input class="myin" class="input" name="vpass" id="vpass" onkeyup="checker()" type="password" placeholder="Password" value="'.$vpvalue.'">   
                 <div class="flex-container2">
                 <input class="mybutton" onclick="reset_form()" type="reset">
                 <input id="submit" class="mybutton" type="submit" value="Create Account">
