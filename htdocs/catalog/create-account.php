@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +11,24 @@
     <title>Create Account</title>
 </head>
 <body id="bg">
+    <h1 class="banner"><span>Cyber's Gaming Store</span></h1>
+    <div class="banner-nav">
+    <?php if(!isset($_SESSION['auth'])) :?>
+        <a href="index.php">Login</a>
+        <a href="create-account.php">Create-Account</a>
+    <?php else:?>
+        <a href="index.php">Home</a>
+    <?php endif;?>
+        <a href="catalog.php">Products</a>
+    <?php if(isset($_SESSION['auth'])) :?>
+        <a href="logout.php">Logout</a>
+        <a href="cart.php" style="margin-left: 5%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
+    <?php endif;?>
+    </div>
+    <h2 style="color: #ff7a7a;">Create Account:</h2>
     <?php
-        echo '<h1>Account Creation</h1>';
-        echo '<a class="mybutton" href="index.php">Back</a>';
         //Read file and extract credentials
         $auth = Array();
-        
         $servername = "us-cdbr-iron-east-04.cleardb.net";
         $username = "bc5c6e77231e1a";
         $password = "4350b0ee";

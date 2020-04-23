@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +14,17 @@
 <body id="bg">
 <h1 class="banner"><span>Cyber's Gaming Store</span></h1>
 <div class="banner-nav">
+<?php if(!isset($_SESSION['auth'])) :?>
     <a href="index.php">Login</a>
     <a href="create-account.php">Create-Account</a>
+<?php else:?>
+    <a href="index.php">Home</a>
+<?php endif;?>
     <a href="catalog.php">Products</a>
+<?php if(isset($_SESSION['auth'])) :?>
     <a href="logout.php">Logout</a>
-    <a href="cart.php" style="padding: 1.6%; margin-left: 10%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
+    <a href="cart.php" style="margin-left: 5%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
+<?php endif;?>
 </div>
 <div class="flex-container2" style="margin-top: 5%">
 <input class="myin" type="text" id="searchTerm" onkeyup ="nameSearch()">

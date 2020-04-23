@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,19 +8,49 @@
     <link rel="stylesheet" href="css/main.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalog</title>
+    <title>Product</title>
 </head>
 <body id="bg">
 <h1 class="banner"><span>Cyber's Gaming Store</span></h1>
 <div class="banner-nav">
+<?php if(!isset($_SESSION['auth'])) :?>
     <a href="index.php">Login</a>
     <a href="create-account.php">Create-Account</a>
+<?php else:?>
+    <a href="index.php">Home</a>
+<?php endif;?>
     <a href="catalog.php">Products</a>
-    <a href="logout.php">Log out</a>
-    <a href="cart.php" style="padding: 1.6%; margin-left: 10%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
+<?php if(isset($_SESSION['auth'])) :?>
+    <a href="logout.php">Logout</a>
+    <a href="cart.php" style="margin-left: 5%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
+<?php endif;?>
 </div>
 <?php
-    if(isset($_GET['prodId']) && !empty($_GET['prodId'])){
+    if(!empty($_POST)){
+        if(isset($_SESSION['auth'])){
+
+            if(!isset($_SESSION['prodid'])){
+                $_SESSION['prodid'] = array();
+                $_SESSION['qty'] = array();
+                $_SESSION['price'] = array();
+                $_SESSION['name'] = array();
+            }
+            array_push($_SESSION['prodid'], $_POST['prodid']);
+            array_push($_SESSION['qty'], $_POST['qty']);
+            array_push($_SESSION['price'], $_POST['price']);
+            array_push($_SESSION['name'], $_POST['name']);
+            header("Location: catalog.php");
+        }
+        elseif(!isset($_SESSION['auth'])){
+        echo '
+        <div class="flex-container">
+        <br><br><h2 style="border-bottom: 2px solid;">Please Log in before adding items to your Cart</h2><br>
+        <a class="mybutton" style="color: #151D21;" href="index.php">Login</a>  
+        ';
+        }
+    }
+
+    if(isset($_GET['prodId']) && !empty($_GET['prodId']) && empty($_POST)){
         $prodid = $_GET['prodId'];
         include_once('includes/product.php');
         $product = new Product($prodid);
@@ -30,12 +63,15 @@
             <div class="flex-product">
                 <img style="max-height: 500px; max-width: 600px; height: 60%; width: 60%;" src="'.$product->getImg().'" alt="Product">
                 <div class="flex-container">
-                    <p style=" width: 75%;">'.$product->getDesc().'</p>
-                    <form action="cart.php" method="POST">
+                    <h2 style=" width: 50%; margin: 0% 0% 5% 0%; font-size: 40px;">$'.$product->getPrice().'</h2>
+                    <p style=" width: 75%; margin: 0% 0% 5% 0%;">'.$product->getDesc().'</p>
+                    <form action="product.php" method="POST">
                     <div class="flex-container2">
                         <input type="hidden" name="prodid" value="'.$prodid.'">
+                        <input type="hidden" name="name" value="'.$product->getName().'">
+                        <input type="hidden" name="price" value="'.$product->getPrice().'">
                         <label for="amount">Amount:</label>
-                        <input style="width: 15%;" class="myin" type="number" min="1" id="amount" name="amount" step="1" value="1">
+                        <input style="width: 15%;" class="myin" type="number" min="1" name="qty" step="1" value="1">
                         <input class="mybutton" type="submit" value="Add to Cart"> 
                     </div>
                     </form>
@@ -46,7 +82,6 @@
         </div>
         ';
     }
-
 ?>
 </body>
 </html>

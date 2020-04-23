@@ -24,14 +24,13 @@ a:hover {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
 }
 .banner-nav a {
     text-decoration: none;
     color: white;
-
+    text-align: center;
     font-size: 25px;
-    padding: 1% 1%;
+    padding: .5% .5%;
     border-bottom: 2px solid transparent;
 
     transition: 0.2s ease-out;
@@ -48,7 +47,7 @@ a:hover {
     display: inline-flex;
     text-align: center;
     padding: 6px;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-right: 5%;
     margin-left: 5%;
     border: none;
@@ -60,7 +59,6 @@ a:hover {
     color: #151D21;
     display: inline-flex;
     padding: 6px;
-    margin-bottom: 10px;
     border: 2px solid gray;
     border-radius: 5px;
 }
@@ -68,7 +66,6 @@ a:hover {
 .mybutton:hover {
     background: white;
     font-size: 25px;
-    margin-top: 5px;
 }
 body {
     font-family: 'Roboto';
@@ -137,6 +134,7 @@ td, th {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    margin-top: 5%;
     justify-content: center;
 }
 
