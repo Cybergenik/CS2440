@@ -31,6 +31,7 @@ session_start();
     <a class="mybutton" style="color: #151D21;" href="index.php">Login</a>  
 </div>
 <?php else :?>
+    <h2 style="border-bottom: 2px solid; width: 15%; color: #ff7a7a; margin-bottom: 2%;">Cart</h2>
 <?php
 if(!empty($_POST) && !isset($_POST['purchase'])){
     echo '<br>';

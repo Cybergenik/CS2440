@@ -25,6 +25,7 @@ session_start();
     <a href="cart.php" style="margin-left: 5%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
 <?php endif;?>
 </div>
+<h2 style="border-bottom: 2px solid; width: 15%; color: #ff7a7a;">Product</h2>
 <?php
     if(!empty($_POST)){
         if(isset($_SESSION['auth'])){
@@ -35,11 +36,17 @@ session_start();
                 $_SESSION['price'] = array();
                 $_SESSION['name'] = array();
             }
-            array_push($_SESSION['prodid'], $_POST['prodid']);
-            array_push($_SESSION['qty'], $_POST['qty']);
-            array_push($_SESSION['price'], $_POST['price']);
-            array_push($_SESSION['name'], $_POST['name']);
-            header("Location: catalog.php");
+            $pid = array_keys($_SESSION['prodid'], $_POST['prodid']);
+            if(isset($_SESSION['prodid'][$pid[0]])){
+                $_SESSION['qty'][$pid[0]] += $_POST['qty'];
+            }
+            else{
+                array_push($_SESSION['prodid'], $_POST['prodid']);
+                array_push($_SESSION['qty'], $_POST['qty']);
+                array_push($_SESSION['price'], $_POST['price']);
+                array_push($_SESSION['name'], $_POST['name']);
+                header("Location: catalog.php");
+            }
         }
         elseif(!isset($_SESSION['auth'])){
         echo '
@@ -81,6 +88,9 @@ session_start();
         </div>
         </div>
         ';
+    }
+    else{
+        header("Location: catalog.php");
     }
 ?>
 </body>

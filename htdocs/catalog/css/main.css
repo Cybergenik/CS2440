@@ -106,7 +106,7 @@ td, th {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 30px;
+    padding-top: 5px;
     overflow: hidden;
 }
 .flex-catalog {
