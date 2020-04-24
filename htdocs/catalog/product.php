@@ -54,14 +54,13 @@ session_start();
             }
         }
         elseif(!isset($_SESSION['auth'])){
-        echo '
-        <div class="flex-container">
-        <br><br><h2 style="border-bottom: 2px solid;">Please Log in before adding items to your Cart</h2><br>
-        <a class="mybutton" style="color: #151D21;" href="index.php">Login</a>  
-        ';
+            echo '
+            <div class="flex-container">
+            <br><br><h2 style="border-bottom: 2px solid;">Please Log in before adding items to your Cart</h2><br>
+            <a class="mybutton" style="color: #151D21;" href="index.php">Login</a>  
+            ';
         }
     }
-
     if(isset($_GET['prodId']) && !empty($_GET['prodId']) && empty($_POST)){
         $prodid = $_GET['prodId'];
         include_once('includes/product.php');
@@ -94,8 +93,8 @@ session_start();
         </div>
         ';
     }
-    else{
-        header("Location: catalog.php");
+    elseif(!isset($_GET['prodId']) && empty($_POST)){
+        header('Location: catalog.php');
     }
 ?>
 </body>
