@@ -65,7 +65,7 @@ session_start();
         }
         if (!isset($_SESSION['auth'])){
             echo '
-            <h2 style="color: #ff7a7a;">Log in:</h2>
+            <h2 style="border-bottom: 2px solid; width: 15%; color: #ff7a7a; margin-bottom: 2%">Log in:</h2>
             <form class="flex-container" action="index.php" method="post">
             <label for="user">Username:</label>        
                 <input class="myin" class="input" name="user" id="user" type="text" placeholder="Username">

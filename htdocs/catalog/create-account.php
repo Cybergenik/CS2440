@@ -25,7 +25,7 @@ session_start();
         <a href="cart.php" style="margin-left: 5%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
     <?php endif;?>
     </div>
-    <h2 style="color: #ff7a7a;">Create Account:</h2>
+    <h2 style="border-bottom: 2px solid; width: 15%; color: #ff7a7a; margin-bottom: 2%;">Create Account</h2>
     <?php
         //Read file and extract credentials
         $auth = Array();
