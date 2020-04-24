@@ -73,7 +73,7 @@ session_start();
         <h1 class="card-title" style="text-align: center; border-bottom: 2px solid; border-color: white;">'.$product->getName().'</h1>
         <div class="card-body">
             <div class="flex-product">
-                <img style="max-height: 500px; max-width: 600px; height: 60%; width: 60%;" src="'.$product->getImg().'" alt="Product">
+                <img id="product-img" src="'.$product->getImg().'" alt="Product">
                 <div class="flex-container">
                     <h2 style=" width: 50%; margin: 0% 0% 5% 0%; font-size: 40px;">$'.$product->getPrice().'</h2>
                     <p style=" width: 75%; margin: 0% 0% 5% 0%;">'.$product->getDesc().'</p>

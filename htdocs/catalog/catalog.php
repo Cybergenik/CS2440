@@ -43,9 +43,9 @@ include_once('includes/product.php');
     for($i = 1; $i <= $total->getTotal();$i++) {
         $product = new Product($i);
         echo '
-        <div class="card" style="width: 30%; height: 30%; margin-bottom: 10%; transition: 0.2s ease-out;" id="prod'.$i.'">
+        <div class="card" id="card-style" id="prod'.$i.'">
         <h5 class="card-title" style="color: black; text-align: center; font-size: 25px; border-bottom: 2px solid;">'.$product->getName().'</h5>
-        <img class="card-img-top" style="width: 345px; height: 250px; align-self: center;" src="'.$product->getImg().'" alt="Product" height="100%" witdth="100%">
+        <img class="card-img-top" id="prod-img" src="'.$product->getImg().'" alt="Product" height="100%" witdth="100%">
         <div class="card-body">
             <p class="card-text" style="color: black; font-size: 17px; height: 15%; width: 100%;" hidden>'.$product->getDesc().'</p>
         </div>

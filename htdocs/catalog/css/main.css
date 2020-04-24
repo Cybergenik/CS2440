@@ -96,7 +96,7 @@ table {
 
 td, th {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center;
     padding: 8px;
   }
 
@@ -137,12 +137,65 @@ td, th {
     margin-top: 5%;
     justify-content: center;
 }
-
+#card-style{
+    width: 30%; 
+    height: 30%; 
+    margin-bottom: 10%; 
+    transition: 0.2s ease-out;
+}
+#prod-img{
+    width: 345px; 
+    height: 250px; 
+    align-self: center;
+}
+#product-img{
+    max-height: 500px; 
+    max-width: 600px; 
+    height: 60%; 
+    width: 60%;
+}
 @media screen and (max-width: 600px){
     .banner-nav{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    .flex-catalog {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: column;
+        margin: 5% 5% 0% 15%;
+        overflow: hidden;
+    }
+    .flex-product {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin-top: 5%;
+        justify-content: center;
+    }    
+    table {
+        width: 100%;
+    }
+    #qty{
+        padding: 0px;
+    }
+    #card-style{
+        width: 70%;  
+        margin-bottom: 10%; 
+        transition: 0.2s ease-out;
+    }
+    #prod-img{
+        width: 224px; 
+        height: 170px; 
+        align-self: center;
+    }
+    #searchTerm{
+        width: 40%;
+    }
+    #product-img{
+        align-self: center;
     }
 }

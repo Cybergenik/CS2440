@@ -78,10 +78,10 @@ session_start();
                 <input class="myin" class="input" name="pass" id="pass" type="password" placeholder="Password">
                 <div class="flex-container2">
                 <input class="mybutton" type="reset">
-                <input class="mybutton"  type="submit">
+                <input class="mybutton"  type="submit" value="Login">
                 </div>
             </form>
-            <div class="flex-container">
+            <div class="flex-container" style="margin-top: 2%">
             <button class="mybutton" onClick="document.location.href=\'create-account.php\'">Create Account</button>
             </div>
             ';
