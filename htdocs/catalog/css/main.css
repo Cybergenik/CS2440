@@ -156,6 +156,13 @@ td, th {
     height: 60%; 
     width: 60%;
 }
+@media screen and (max-width: 1200px){
+    #prod-img{
+        width: 224px; 
+        height: 170px; 
+        align-self: center;
+    }
+}
 @media screen and (max-width: 600px){
     .banner-nav{
         display: flex;
