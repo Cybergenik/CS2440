@@ -50,7 +50,7 @@ include_once('includes/product.php');
             <p class="card-text" style="color: black; font-size: 17px; height: 15%; width: 100%;" hidden>'.$product->getDesc().'</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: black; text-align: center;">Price: '.$product->getPrice().'</li>
+            <li class="list-group-item" style="color: black; text-align: center;">Price: $'.$product->getPrice().'</li>
         </ul>
         <div class="card-body">
             <a href="product.php?prodId='.$i.'" class="mybutton" class="card-link" style="margin-left: 13%;">View product details</a>
