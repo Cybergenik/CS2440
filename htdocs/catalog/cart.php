@@ -120,7 +120,7 @@ else{
         <th>Qty</th>
         </tr>';
     $total= 0.00;
-    for($i = 0; $i < sizeof($_SESSION['prodid']); $i++){
+    foreach($_SESSION['prodid'] as $i=>$val){
         echo '
             <tr>
             <th>'.$_SESSION['name'][$i].'</th>
