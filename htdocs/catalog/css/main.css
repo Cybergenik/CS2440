@@ -156,7 +156,7 @@ td, th {
     height: 60%; 
     width: 60%;
 }
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1400px){
     #prod-img{
         width: 224px; 
         height: 170px; 
