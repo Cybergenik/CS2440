@@ -24,6 +24,11 @@ session_start();
 <?php if(isset($_SESSION['auth'])) :?>
     <a href="logout.php">Logout</a>
     <a href="cart.php" style="margin-left: 5%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
+    <?php
+    if(isset($_SESSION['prodid'])){
+        echo sizeof($_SESSION['prodid']);
+    }
+    ?>
 <?php endif;?>
 </div>
 <h2 style="border-bottom: 2px solid; width: 15%; color: #ff7a7a;">Catalog</h2>
