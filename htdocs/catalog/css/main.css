@@ -7,7 +7,7 @@ html {
     display: none;
 }
 #bg {
-    background-image: url('../img/bg.gif');
+    background: url(../img/bg.gif) repeat #000;
     background-repeat: repeat;
 }
 
@@ -67,7 +67,6 @@ a:hover {
 
 .mybutton:hover {
     background: white;
-    font-size: 25px;
 }
 body {
     font-family: 'Roboto';
