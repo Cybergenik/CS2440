@@ -8,7 +8,7 @@ html {
 }
 #bg {
     background-image: url('../img/bg.gif');
-    background-repeat: repeat;
+    background-repeat: repeat-y;
 }
 
 a:hover {
@@ -139,12 +139,6 @@ td, th {
     margin-top: 5%;
     justify-content: center;
 }
-#card-style{
-    width: 30%; 
-    height: 30%; 
-    margin-bottom: 10%; 
-    transition: 0.2s ease-out;
-}
 #prod-img{
     width: 345px; 
     height: 250px; 
@@ -191,8 +185,8 @@ td, th {
     #qty{
         padding: 0px;
     }
-    #card-style{
-        width: 70%;  
+    .card[style]{
+        width: 70% !important;
         margin-bottom: 10%; 
         transition: 0.2s ease-out;
     }

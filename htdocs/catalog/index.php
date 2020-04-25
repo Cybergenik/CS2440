@@ -31,11 +31,12 @@ session_start();
     <?php endif;?>
     </div>
     <br>
-    <?php        
-        $servername = "us-cdbr-iron-east-04.cleardb.net";
-        $username = "bc5c6e77231e1a";
-        $password = "4350b0ee";
-        $dbname = "heroku_d1a3b3905955062";
+    <?php
+        include_once('includes/globals.php');       
+        global $servername;
+        global $username;
+        global $password;
+        global $dbname; 
         $conn = new mysqli($servername, $username, $password, $dbname);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -93,11 +94,11 @@ session_start();
             <br><br><h2>Gamers Choices:</h2><br>
             <div class='flex-container2'>
             ";
-
-            $servername = "us-cdbr-iron-east-04.cleardb.net";
-            $username = "bc5c6e77231e1a";
-            $password = "4350b0ee";
-            $dbname = "heroku_d1a3b3905955062";
+            include_once('includes/globals.php');  
+            global $servername;
+            global $username;
+            global $password;
+            global $dbname; 
             $conn = new mysqli($servername, $username, $password, $dbname);
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);

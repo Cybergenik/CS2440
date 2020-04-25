@@ -34,10 +34,11 @@ session_start();
     <?php
         //Read file and extract credentials
         $auth = Array();
-        $servername = "us-cdbr-iron-east-04.cleardb.net";
-        $username = "bc5c6e77231e1a";
-        $password = "4350b0ee";
-        $dbname = "heroku_d1a3b3905955062";
+        include_once('includes/globals.php');  
+        global $servername;
+        global $username;
+        global $password;
+        global $dbname; 
         $conn = new mysqli($servername, $username, $password, $dbname);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);

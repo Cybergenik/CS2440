@@ -43,11 +43,11 @@ include_once('includes/product.php');
     for($i = 1; $i <= $total->getTotal();$i++) {
         $product = new Product($i);
         echo '
-        <div class="card" id="card-style" id="prod'.$i.'">
-        <h5 class="card-title" style="color: black; text-align: center; font-size: 25px; border-bottom: 2px solid;">'.$product->getName().'</h5>
+        <div class="card" id="prod'.$i.'" style="width: 30%; height: 30%; margin-bottom: 10%; transition: 0.2s ease-out;">
+        <h5 class="card-title" id="prodname'.$i.'" style="color: black; text-align: center; font-size: 25px; border-bottom: 2px solid;">'.$product->getName().'</h5>
         <img class="card-img-top" id="prod-img" src="'.$product->getImg().'" alt="Product" height="100%" witdth="100%">
         <div class="card-body">
-            <p class="card-text" style="color: black; font-size: 17px; height: 15%; width: 100%;" hidden>'.$product->getDesc().'</p>
+            <p class="card-text" id="prodid'.$i.'" style="color: black; font-size: 17px; height: 15%; width: 100%;" hidden>'.$product->getDesc().'</p>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item" style="color: black; text-align: center;">Price: $'.$product->getPrice().'</li>
