@@ -44,6 +44,7 @@ session_start();
             $pid = array_keys($_SESSION['prodid'], $_POST['prodid']);
             if(isset($_SESSION['prodid'][$pid[0]])){
                 $_SESSION['qty'][$pid[0]] += $_POST['qty'];
+                header("Location: catalog.php");
             }
             else{
                 array_push($_SESSION['prodid'], $_POST['prodid']);
