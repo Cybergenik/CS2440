@@ -43,7 +43,7 @@ include_once('includes/product.php');
     for($i = 1; $i <= $total->getTotal();$i++) {
         $product = new Product($i);
         echo '
-        <div class="card" id="prod'.$i.'" style="width: 30%; height: 30%; margin-bottom: 10%; transition: 0.2s ease-out;">
+        <div class="card" id="prod'.$i.'" style="width: 30%; height: 30%; margin-bottom: 10%;">
         <h5 class="card-title" id="prodname'.$i.'" style="color: black; text-align: center; font-size: 25px; border-bottom: 2px solid;">'.$product->getName().'</h5>
         <img class="card-img-top" id="prod-img" src="'.$product->getImg().'" alt="Product" height="100%" witdth="100%">
         <div class="card-body">

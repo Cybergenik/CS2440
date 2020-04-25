@@ -8,7 +8,7 @@ html {
 }
 #bg {
     background-image: url('../img/bg.gif');
-    background-repeat: repeat-y;
+    background-repeat: repeat;
 }
 
 a:hover {
