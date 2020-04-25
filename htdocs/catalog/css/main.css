@@ -10,7 +10,6 @@ html {
     background: url(../img/bg.gif) repeat #000;
     background-repeat: repeat;
 }
-
 a:hover {
     color: #ff7a7a;
 }
@@ -32,6 +31,7 @@ a:hover {
     color: white;
     text-align: center;
     font-size: 25px;
+    margin: 1%;
     padding: .5% .5%;
     border-bottom: 2px solid transparent;
 
