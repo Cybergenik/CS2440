@@ -25,7 +25,7 @@ session_start();
     <a href="cart.php" style="margin-left: 5%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
     <?php
     if(isset($_SESSION['prodid'])){
-        echo sizeof($_SESSION['prodid']);
+        print '<p id="cart-num">'.sizeof($_SESSION['prodid']).'</p> ';
     }
     ?>
 <?php endif;?>

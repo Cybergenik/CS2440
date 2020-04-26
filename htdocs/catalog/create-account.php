@@ -53,14 +53,19 @@ session_start();
             //validate username and password match
             else{
                 include_once('includes/hash.php');
+                $exists = $conn->prepare("SELECT * FROM secure WHERE username= ?");
+                $exists->bind_param("s", $user);
                 $user = $_POST['user'];
-                $sql = "SELECT * FROM secure WHERE username= '$user'";
-                $uexists = mysqli_num_rows(mysqli_query($conn, $sql));
+                $exists->execute();
+                $result = $exists->get_result();
+                $uexists = $result->num_rows;
+
                 if(!$uexists){
+                    $add_user = $conn->prepare('INSERT INTO secure (username, password) VALUES(?, ?)');
+                    $add_user->bind_param("ss", $user, $pass);
                     $user = $_POST["user"];
                     $pass = hasher($_POST['user'], $_POST['pass']);
-                    $sql2 = 'INSERT INTO secure (username, password) VALUES("'.$user.'", "'.$pass.'")';
-                    mysqli_query($conn, $sql2);
+                    $add_user->execute();
                     $x = true;  
                 }
                 elseif($uexists){

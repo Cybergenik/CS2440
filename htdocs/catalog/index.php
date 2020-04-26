@@ -17,6 +17,7 @@ session_start();
         <a href="index.php">Login</a>
         <a href="create-account.php">Create-Account</a>
     <?php else:?>
+        <a href="edit-user.php" style="position: absolute; top: 10; left: 0;"><?php echo $_SESSION['auth']?></a>
         <a href="index.php">Home</a>
     <?php endif;?>
         <a href="catalog.php">Products</a>
@@ -37,6 +38,7 @@ session_start();
         global $username;
         global $password;
         global $dbname; 
+
         $conn = new mysqli($servername, $username, $password, $dbname);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -50,13 +52,19 @@ session_start();
             //validate username and password match
             else{
                 include_once('includes/hash.php');
+                $user_auth = $conn->prepare("SELECT * FROM secure WHERE username=? AND password=?");
                 $user = $_POST['user'];
+                var_dump($user);
                 $pass = hasher($_POST['user'], $_POST['pass']);
-                $sql = "SELECT * FROM secure WHERE username= '$user' && password= '$pass'";
-                $results = mysqli_query($conn, $sql);
-                $auth = mysqli_num_rows($results);
+                $user_auth->bind_param("ss", $user, $pass);
+                //Assign variables
+                //Execute SQL
+                $user_auth->execute();
+                $result = $user_auth->get_result();
+                $auth = $result->num_rows;
+
                 if ($auth){
-                    $_SESSION['auth'] = true;
+                    $_SESSION['auth'] = $user;
                     header('Location: index.php');
                 }
                 else {
