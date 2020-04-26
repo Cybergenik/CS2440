@@ -83,7 +83,7 @@ session_start();
                         <input type="hidden" name="name" value="'.$product->getName().'">
                         <input type="hidden" name="price" value="'.$product->getPrice().'">
                         <label for="amount">Amount:</label>
-                        <input style="width: 15%;" class="myin" type="number" min="1" name="qty" step="1" value="1">
+                        <input style="width: 60px;" class="myin" type="number" min="1" name="qty" step="1" value="1">
                         <input class="mybutton" type="submit" value="Add to Cart"> 
                     </div>
                     </form>

@@ -79,7 +79,7 @@ if(!isset($_POST['purchase'])){
                 <th>'.$_SESSION['name'][$i].'</th>
                 <th>$'.$_SESSION['price'][$i].'</th>
                 <th>$'.$_SESSION['price'][$i] * $_SESSION['qty'][$i].'</th>
-                <th><input id="qty" style="width: 20%;" class="myin" type="number" min="0" name="'.$i.'" step="1" value="'.$_SESSION['qty'][$i].'"></th>
+                <th><input id="qty" style="width: 65px;" class="myin" type="number" min="0" name="'.$i.'" step="1" value="'.$_SESSION['qty'][$i].'"></th>
                 </tr>
             ';
             $total += $_SESSION['price'][$i] * $_SESSION['qty'][$i];

@@ -98,7 +98,7 @@ table {
 td, th {
     border: 1px solid #dddddd;
     text-align: center;
-    padding: 8px;
+    padding: 5px;
   }
 
 .flex-container {
@@ -144,15 +144,22 @@ td, th {
     align-self: center;
 }
 #product-img{
-    max-height: 500px; 
-    max-width: 600px; 
+    max-width: 350px; 
     height: 60%; 
     width: 60%;
 }
+@media screen and (max-width: 1700px){
+    #prod-img{
+        height: 90%; 
+        width: 90%;
+        max-height: 250px; 
+    }
+}
 @media screen and (max-width: 1400px){
     #prod-img{
-        width: 224px; 
-        height: 170px; 
+        width: 90%; 
+        height: 90%; 
+        max-height: 250px; 
         align-self: center;
     }
 }

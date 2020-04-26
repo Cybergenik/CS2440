@@ -43,13 +43,6 @@ session_start();
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $sql = "SELECT * FROM secure";
-        $results = mysqli_query($conn, $sql);
-
-        $auth = Array();
-        while($row = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
-            $auth += Array($row['username'] => $row['password']);
-        }
         //display error messages and missed fields
         $x = false;
         if(!empty($_POST)){
@@ -60,7 +53,9 @@ session_start();
             //validate username and password match
             else{
                 include_once('includes/hash.php');
-                $uexists = array_key_exists($_POST['user'], $auth);
+                $user = $_POST['user'];
+                $sql = "SELECT * FROM secure WHERE username= '$user'";
+                $uexists = mysqli_num_rows(mysqli_query($conn, $sql));
                 if(!$uexists){
                     $user = $_POST["user"];
                     $pass = hasher($_POST['user'], $_POST['pass']);
