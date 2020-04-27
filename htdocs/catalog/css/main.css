@@ -72,6 +72,7 @@ body {
     font-family: 'Roboto';
     font-size: 25px;
     color: aliceblue;
+    line-height: 1;
 }
 
 h1{
@@ -137,6 +138,15 @@ td, th {
     flex-wrap: nowrap;
     margin-top: 5%;
     justify-content: center;
+}
+.cart-number{
+    display: flex; 
+    flex-direction: row;
+    justify-items: flex-end; 
+    align-items: center;
+    height: 5rem; 
+    width: 5rem; 
+    padding: 0rem 0rem 0rem 5rem;
 }
 #prod-img{
     width: 345px; 

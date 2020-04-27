@@ -17,18 +17,20 @@ session_start();
         <a href="index.php">Login</a>
         <a href="create-account.php">Create-Account</a>
     <?php else:?>
-        <a href="edit-user.php" style="position: absolute; top: 10; left: 0;"><?php echo $_SESSION['auth']?></a>
+        <!--<a href="edit-user.php" style="position: absolute; top: 10; left: 0;"><?php #echo $_SESSION['auth']?></a>-->
         <a href="index.php">Home</a>
     <?php endif;?>
         <a href="catalog.php">Products</a>
     <?php if(isset($_SESSION['auth'])) :?>
         <a href="logout.php">Logout</a>
-        <a href="cart.php" style="margin-left: 5%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
+        <div class="cart-number">
+        <a href="cart.php" style="padding: 0rem 0rem 1rem 0rem;"><img src="img/cart.png" alt="Cart" height="35" width="35"></a>
         <?php
         if(isset($_SESSION['prodid'])){
-            echo sizeof($_SESSION['prodid']);
+            print '<p style="padding-bottom: 3rem">'.sizeof($_SESSION['prodid']).'</p>';
         }
         ?>
+        </div>
     <?php endif;?>
     </div>
     <br>
@@ -53,9 +55,8 @@ session_start();
             else{
                 include_once('includes/hash.php');
                 $user_auth = $conn->prepare("SELECT * FROM secure WHERE username=? AND password=?");
-                $user = $_POST['user'];
-                var_dump($user);
-                $pass = hasher($_POST['user'], $_POST['pass']);
+                $user = str_replace(' ', '', $_POST['user']);
+                $pass = hasher($_POST['user'], str_replace(' ', '', $_POST['pass']));
                 $user_auth->bind_param("ss", $user, $pass);
                 //Assign variables
                 //Execute SQL

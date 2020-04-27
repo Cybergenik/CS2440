@@ -22,12 +22,14 @@ session_start();
     <a href="catalog.php">Products</a>
 <?php if(isset($_SESSION['auth'])) :?>
     <a href="logout.php">Logout</a>
-    <a href="cart.php" style="margin-left: 5%;"><img src="img/cart.png" alt="Cart" height="32" width="32"></a>
+    <div class="cart-number">
+    <a href="cart.php" style="padding: 0rem 0rem 1rem 0rem;"><img src="img/cart.png" alt="Cart" height="35" width="35"></a>
     <?php
     if(isset($_SESSION['prodid'])){
-        echo sizeof($_SESSION['prodid']);
+        print '<p style="padding-bottom: 2rem">'.sizeof($_SESSION['prodid']).'</p>';
     }
     ?>
+    </div>
 <?php endif;?>
 </div>
 <h2 style="border-bottom: 2px solid; width: 15%; color: #ff7a7a;">Product</h2>
