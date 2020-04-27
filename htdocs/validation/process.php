@@ -8,27 +8,18 @@
 </head>
 <body id='bg'>
     <?php
+        if (isset($_POST['email'])) $email = $_POST['email'];
+        if (isset($_POST['phone'])) $phone = $_POST['phone'];
         if (!empty($_POST['email']) && !empty($_POST['phone'])){
-            $email = $_POST['email'];
-            $phone = $_POST['phone'];
             $eregex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
             $pregex = '/^\([0-9]{3}\)-[0-9]{3}-[0-9]{4}$/';
             if (!preg_match($eregex ,$email) && preg_match($pregex, $phone)) {
-                if(empty($email))
-                    header('location: index.php?err=1&phone='.$phone);
-                else
                     header('location: index.php?err=4&phone='.$phone);
             }
             elseif (!preg_match($pregex ,$phone) && preg_match($eregex, $email)) {
-                if (empty($phone))
-                    header('location: index.php?err=2&email='.$email);
-                else
                     header('location: index.php?err=5&email='.$email);
             }
             elseif (!preg_match($pregex ,$phone) && !preg_match($eregex, $email)){
-                if (empty($email) && empty($phone))
-                    header('location: index.php?err=3');
-                else
                     header('location: index.php?err=6');
             }
             elseif (preg_match($pregex ,$phone) && preg_match($eregex, $email)){
@@ -38,6 +29,15 @@
                 echo $email." | ".$phone;
                 echo '</div>';
             }
+        }
+        elseif(!empty($_POST['email']) && empty($_POST['phone'])){
+            header('location: index.php?err=2&email='.$email);
+        }
+        elseif(empty($_POST['email']) && !empty($_POST['phone'])){
+            header('location: index.php?err=1&phone='.$phone);
+        }
+        elseif(empty($_POST['email']) && empty($_POST['phone'])){
+            header('location: index.php?err=3');
         }
     ?>
 </body>

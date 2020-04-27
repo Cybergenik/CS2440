@@ -10,6 +10,7 @@ session_start();
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <title>Login</title>
 </head>
+
 <body id="bg">
     <h1 class="banner"><span>Cyber's Gaming Store</span></h1>
     <div class="banner-nav">
