@@ -8,7 +8,8 @@ class Product{
 
     function __construct($id){
         include_once('db.php');
-        $conn = Conn();
+        $conn = new Conn();
+
         $sql = "SELECT * FROM products WHERE id = $id";
         $results = mysqli_query($conn->getConn(), $sql);
 

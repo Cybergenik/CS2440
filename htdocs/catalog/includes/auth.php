@@ -8,7 +8,7 @@ class Auth{
 
     function __construct($user, $pass){
         include_once('db.php');
-        $conn = Conn();
+        $conn = new Conn();
 
         $user_auth = $conn->getConn()->prepare("SELECT * FROM secure WHERE username=? AND password=?");
         
