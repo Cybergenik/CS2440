@@ -1,4 +1,5 @@
 <?php
+//TODO: change password hashign to bcrypt, finish edit-user, make it scale correctly with mobile.
 session_start();
 ?>
 <!DOCTYPE html>
