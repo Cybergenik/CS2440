@@ -1,14 +1,4 @@
 <?php
-include_once('globals.php');
-global $servername;
-global $username;
-global $password;
-global $dbname; 
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 class Product{
         private $total;
         private $name;
@@ -17,11 +7,12 @@ class Product{
         private $image;
 
     function __construct($id){
-        global $conn;
+        include_once('db.php');
+        $conn = Conn();
         $sql = "SELECT * FROM products WHERE id = $id";
-        $results = mysqli_query($conn, $sql);
+        $results = mysqli_query($conn->getConn(), $sql);
 
-        $total = mysqli_query($conn, "SELECT COUNT(*) FROM products;");
+        $total = mysqli_query($conn->getConn(), "SELECT COUNT(*) FROM products;");
         $total = mysqli_fetch_array($total, MYSQLI_ASSOC);
         $this->total = $total["COUNT(*)"];
 
@@ -30,6 +21,7 @@ class Product{
         $this->desc = $product['desc'];
         $this->price = $product['price'];
         $this->image = $product['image'];
+        $conn->closeConn();
     }
     public function getTotal(){
         return $this->total;

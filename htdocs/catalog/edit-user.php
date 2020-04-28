@@ -26,10 +26,13 @@ session_start();
     </div>
 
     <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordion">
-      <form class="flex-container">
+    <div class="card-body">  
+      <form class="flex-container" method="POST">
       <input class="myin" name="user" type="text" placeholder="Current Username">
       <input class="myin" name="new_user" type="text" placeholder="New Username">
+      <input class="mybutton"  type="submit" value="Submit">
       </form>
+    </div>
     </div>
   </div>
 
@@ -42,14 +45,39 @@ session_start();
 
     <div id="collapsePass" class="collapse" aria-labelledby="headingPass" data-parent="#accordion">
     <div class="card-body">
-      <input class="myin" name="pass" id="pass" type="text" placeholder="Password">
+      <form class="flex-container" method="POST">
+      <input class="myin" name="pass" type="text" placeholder="Password">
+      <input class="myin" name="new_pass" type="text" placeholder="Password">
+      <input class="mybutton"  type="submit" value="Submit">
+      </form>
     </div>
     </div>
   </div>
 
 </div>
 <?php else :?>
-
+<?php
+  if (!empty($_POST['user']) && !empty($_POST['new_user'])){
+    include_once('includes/globals.php');       
+      global $servername;
+      global $username;
+      global $password;
+      global $dbname;
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+      }
+      include_once('includes/hash.php');
+      $user_auth = $conn->prepare("SELECT * FROM secure WHERE username=?");
+      $user = str_replace(' ', '', $_POST['user']);
+      $user_auth->bind_param("s", $user);
+      //Assign variables
+      //Execute SQL
+      $user_auth->execute();
+      $result = $user_auth->get_result();
+      $auth = $result->num_rows; 
+  }
+?>
 
 <?php endif; ?>
 </body>
