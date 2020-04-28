@@ -11,7 +11,7 @@ class Conn{
     function __construct(){
         $this->servername = "us-cdbr-iron-east-04.cleardb.net";
         $this->username = "bc5c6e77231e1a";
-        $this->password = "847a7d7a0e501f6";
+        $this->password = "0c457db68138b0e";
         $this->dbname = "heroku_d1a3b3905955062";
 
         $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);

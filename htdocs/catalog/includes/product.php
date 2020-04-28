@@ -40,10 +40,4 @@ class Product{
         return $this->image;
     }
 }
-
-function connClose(){
-    global $conn;
-    $conn->close();
-}
-
 ?>

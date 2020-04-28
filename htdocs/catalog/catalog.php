@@ -61,7 +61,6 @@ include_once('includes/product.php');
         </div>
         ';
     }
-    connClose();
 ?>
 </div>
 </body>
