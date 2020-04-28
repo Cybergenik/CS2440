@@ -32,17 +32,6 @@ session_start();
     </div>
     <h2 style="border-bottom: 2px solid; width: 15%; color: #ff7a7a; margin-bottom: 2%;">Create Account</h2>
     <?php
-        //Read file and extract credentials
-        $auth = Array();
-        include_once('includes/globals.php');  
-        global $servername;
-        global $username;
-        global $password;
-        global $dbname; 
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
         //display error messages and missed fields
         $x = false;
         if(!empty($_POST)){
@@ -52,8 +41,9 @@ session_start();
             }
             //validate username and password match
             else{
-                include_once('includes/hash.php');
-                $exists = $conn->prepare("SELECT * FROM secure WHERE username= ?");
+                include_once('includes/db.php');
+                $conn = new Conn();
+                $exists = $conn->getConn()->prepare("SELECT * FROM secure WHERE username= ?");
                 $exists->bind_param("s", $user);
                 $user = $_POST['user'];
                 $exists->execute();
@@ -61,7 +51,7 @@ session_start();
                 $uexists = $result->num_rows;
 
                 if(!$uexists){
-                    $add_user = $conn->prepare('INSERT INTO secure (username, password) VALUES(?, ?)');
+                    $add_user = $conn->getConn()->prepare('INSERT INTO secure (username, password) VALUES(?, ?)');
                     $add_user->bind_param("ss", $user, $pass);
                     $user = $_POST["user"];
                     $pass = hasher($_POST['user'], $_POST['pass']);
@@ -71,6 +61,7 @@ session_start();
                 elseif($uexists){
                     echo "<h4 style='text-align: center'>That Username is taken<h4>";
                 }
+                $conn->closeConn();
             }
         }
 
@@ -98,7 +89,6 @@ session_start();
         }
         //Display Access Granted
         elseif ($x){
-            $conn->close();
             header("Location: index.php?acc=1");
         }
 

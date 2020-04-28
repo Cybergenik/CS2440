@@ -37,16 +37,6 @@ session_start();
     </div>
     <br>
     <?php
-        include_once('includes/globals.php');       
-        global $servername;
-        global $username;
-        global $password;
-        global $dbname; 
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
         //display error messages and missed fields
         if(!empty($_POST)){
             //Make sure fields are filled
@@ -55,19 +45,12 @@ session_start();
             }
             //validate username and password match
             else{
-                include_once('includes/hash.php');
-                $user_auth = $conn->prepare("SELECT * FROM secure WHERE username=? AND password=?");
-                $user = str_replace(' ', '', $_POST['user']);
-                $pass = hasher($_POST['user'], str_replace(' ', '', $_POST['pass']));
-                $user_auth->bind_param("ss", $user, $pass);
-                //Assign variables
-                //Execute SQL
-                $user_auth->execute();
-                $result = $user_auth->get_result();
-                $auth = $result->num_rows;
-
+                include_once('includes/auth.php');
+                $user = new Auth($_POST['user'], $_POST['pass']);
+                var_dump($user->getUser());
+                $auth = $user->getAuth();
                 if ($auth){
-                    $_SESSION['auth'] = $user;
+                    $_SESSION['auth'] = $user->getUser();
                     header('Location: index.php');
                 }
                 else {
@@ -100,22 +83,14 @@ session_start();
         }
         //Display Access Granted
         elseif (isset($_SESSION['auth'])){
-            $conn->close();
             echo "<h2 style='color: #ff7a7a;'>Welcome to <u>Cyber's</u> Gamer Shop</h2>
             <br><br><h2>Gamers Choices:</h2><br>
             <div class='flex-container2'>
             ";
-            include_once('includes/globals.php');  
-            global $servername;
-            global $username;
-            global $password;
-            global $dbname; 
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+            include_once('includes/db.php');  
+            $conn = new Conn();
             $select = "SELECT * FROM web_poll";
-            $results = mysqli_query($conn, $select);
+            $results = mysqli_query($conn->getConn(), $select);
             $data = Array(mysqli_fetch_array($results));
 
             $league = ($data[0]['league'] / $data[0]['moba_total']) * 100;
@@ -193,7 +168,7 @@ session_start();
             </script>
             </div>
             ';
-            $conn->close();
+            $conn->closeConn();
             echo '
                 <div class="flex-container">
                 <a class="mybutton" style="color: #151D21;" href="https://lucianoremes2440.herokuapp.com/web-poll" target="_blank">Take the Survey!</a> 

@@ -16,7 +16,7 @@ class Auth{
         $this->user = str_replace(' ', '', $user);
         $this->pass = hasher($user, str_replace(' ', '', $pass));
         
-        $user_auth->bind_param("ss", $user, $pass);
+        $user_auth->bind_param("ss", $this->user, $this->pass);
         $user_auth->execute();
         $result = $user_auth->get_result();
         $this->auth = $result->num_rows;
