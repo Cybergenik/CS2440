@@ -43,6 +43,7 @@ session_start();
             else{
                 include_once('includes/db.php');
                 $conn = new Conn();
+                
                 $exists = $conn->getConn()->prepare("SELECT * FROM secure WHERE username= ?");
                 $exists->bind_param("s", $user);
                 $user = $_POST['user'];
