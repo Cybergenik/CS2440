@@ -59,14 +59,7 @@ session_start();
 <?php
   if (!empty($_POST['user']) && !empty($_POST['new_user'])){
     include_once('includes/globals.php');       
-      global $servername;
-      global $username;
-      global $password;
-      global $dbname;
-      $conn = new mysqli($servername, $username, $password, $dbname);
-      if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-      }
+      $conn = new Conn();
       include_once('includes/hash.php');
       $user_auth = $conn->prepare("SELECT * FROM secure WHERE username=?");
       $user = str_replace(' ', '', $_POST['user']);
