@@ -55,6 +55,7 @@ session_start();
                     $add_user = $conn->getConn()->prepare('INSERT INTO secure (username, password) VALUES(?, ?)');
                     $add_user->bind_param("ss", $user, $pass);
                     $user = $_POST["user"];
+                    include_once('includes/hash.php');
                     $pass = hasher($_POST['user'], $_POST['pass']);
                     $add_user->execute();
                     $x = true;  

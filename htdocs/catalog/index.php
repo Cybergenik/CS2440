@@ -47,7 +47,6 @@ session_start();
             else{
                 include_once('includes/auth.php');
                 $user = new Auth($_POST['user'], $_POST['pass']);
-                var_dump($user->getUser());
                 $auth = $user->getAuth();
                 if ($auth){
                     $_SESSION['auth'] = $user->getUser();
