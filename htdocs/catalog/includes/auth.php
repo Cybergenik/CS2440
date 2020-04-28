@@ -1,6 +1,4 @@
 <?php
-include_once('globals.php');
-
 class Auth{
     private $auth;
     private $user;

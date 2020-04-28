@@ -58,7 +58,6 @@ session_start();
 <?php else :?>
 <?php
   if (!empty($_POST['user']) && !empty($_POST['new_user'])){
-    include_once('includes/globals.php');       
       $conn = new Conn();
       include_once('includes/hash.php');
       $user_auth = $conn->prepare("SELECT * FROM secure WHERE username=?");
