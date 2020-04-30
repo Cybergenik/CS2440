@@ -44,8 +44,6 @@ session_start();
 if(!empty($_POST) && !isset($_POST['purchase'])){
     echo '<br>';
     foreach($_POST as $id=>$val){   
-        #$key = array_search ($id, $_SESSION['prodid']);
-        #var_dump($key);
         if($val != 0){
             $_SESSION['qty'][$id] = $val;
         }
