@@ -8,7 +8,8 @@ class Auth extends Conn{
     private $result;
 
     function __construct($user, $pass){
-        $user_auth = $this->conn->prepare("SELECT username, password FROM secure WHERE username=?");
+        parent::__construct();
+        $user_auth = $this->getConn()->prepare("SELECT username, password FROM users WHERE username=?");
 
         $this->user = str_replace(' ', '', $user);
         $this->pass = $pass; 
@@ -16,14 +17,12 @@ class Auth extends Conn{
         $user_auth->bind_param("s", $this->user);
         $user_auth->execute();
 
-        $this->$auth = $this->result = $user_auth->get_result()->fetch_assoc();
-        var_dump($this->result);
+        $result = $user_auth->get_result()->fetch_assoc();
         $this->closeConn();
         
-        if($this->auth != NULL){
-            $pass = $this->result[1];#DB Password
-        
-            if(password_verify($this->pass, $pass)){
+        if(isset($result)){
+            $hash = $result['password'];#DB Password
+            if(password_verify($this->pass, $hash)){
                 $this->auth = 1; 
             }
             else{

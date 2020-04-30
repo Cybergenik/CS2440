@@ -9,12 +9,11 @@ class Product extends Conn{
         private $image;
 
     function __construct($id){
-        $conn = new Conn();
-
+        parent::__construct();
         $sql = "SELECT * FROM products WHERE id = $id";
-        $results = mysqli_query($conn->getConn(), $sql);
+        $results = mysqli_query($this->getConn(), $sql);
 
-        $total = mysqli_query($conn->getConn(), "SELECT COUNT(*) FROM products;");
+        $total = mysqli_query($this->getConn(), "SELECT COUNT(*) FROM products;");
         $total = mysqli_fetch_array($total, MYSQLI_ASSOC);
         $this->total = $total["COUNT(*)"];
 
@@ -23,7 +22,7 @@ class Product extends Conn{
         $this->desc = $product['desc'];
         $this->price = $product['price'];
         $this->image = $product['image'];
-        $conn->closeConn();
+        $this->closeConn();
     }
     public function getTotal(){
         return $this->total;

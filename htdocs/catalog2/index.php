@@ -53,7 +53,7 @@ session_start();
                     $_SESSION['auth'] = $user->getUser();
                     header('Location: index.php');
                 }
-                else {
+                elseif(!$auth){
                     echo "<h2 style='color: red'>Access Denied</h2>";
                 }
             }

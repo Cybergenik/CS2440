@@ -26,7 +26,6 @@ function checker(){
     }
 }
 
-
 function reset_form(){
     document.getElementById("pass").style.borderColor = "";
     document.getElementById("vpass").style.borderColor = "";

@@ -41,29 +41,16 @@ session_start();
             }
             //validate username and password match
             else{
-                include_once('includes/db.php');
-                $conn = new Conn();
-                
-                $exists = $conn->getConn()->prepare("SELECT * FROM users WHERE username= ?");
-                $exists->bind_param("s", $user);
-                $user = $_POST['user'];
-                $exists->execute();
-                $result = $exists->get_result();
-                $uexists = $result->num_rows;
+                include_once('includes/create_user.php');
+                $user = new User($_POST['user'], $_POST['pass']);
 
-                if(!$uexists){
-                    $add_user = $conn->getConn()->prepare('INSERT INTO users (username, password) VALUES(?, ?)');
-                    $add_user->bind_param("ss", $user, $pass);
-                    $user = $_POST["user"];
-                    include_once('includes/hash.php');
-                    $pass = hasher($_POST['user'], $_POST['pass']);
-                    $add_user->execute();
+                if(!$user->getUexists()){
+                    $user->addUser();
                     $x = true;  
                 }
-                elseif($uexists){
+                elseif($user->getUexists()){
                     echo "<h4 style='text-align: center'>That Username is taken<h4>";
                 }
-                $conn->closeConn();
             }
         }
 
@@ -71,13 +58,13 @@ session_start();
         if (isset($_POST['pass'])) $pvalue = $_POST['pass']; else $pvalue = '';
         if (isset($_POST['vpass'])) $vpvalue = $_POST['vpass']; else $vpvalue = '';
         //Display Form
-        if (empty($_POST) || !$x){
+        if (!$x){
             echo '
             <form class="flex-container" action="create-account.php" method="post">
             <label for="user">Username:</label>        
                 <input class="myin" class="input" name="user" id="user" type="text" placeholder="Username" value="'.$uvalue.'">
             <label for="pass">Password:</label>
-                <input class="myin" class="input" name="pass" id="pass" onkeyup="checker()" type="password" pattern="[a-zA-Z0-9!@#$%^*_|](?=.*\d).{8,}" title="Must contain at least one number and be at least 8 or more characters" placeholder="Password" value="'.$pvalue.'">
+                <input class="myin" class="input" name="pass" id="pass" onkeyup="checker()" type="password" autocomplete="new-password" minlength="8" maxlength="25" pattern="(?=.*\d).{8,}" required title="Must contain at least one number and be at least 8 or more characters" placeholder="Password" value="'.$pvalue.'">
             <label for="vpass"> Verify Password:</label>
                 <p id="warning" style="color: red; font-size: 18px;" hidden>No Match</p>
                 <p id="pass_war" style="color: red; font-size: 18px;" hidden>Password must be at least 8 characters long and contain atleast 1 number</p>
