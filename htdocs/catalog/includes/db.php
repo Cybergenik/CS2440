@@ -5,7 +5,7 @@ class Conn{
     private $servername;
     private $username;
     private $password;
-    private $dbname; 
+    private $dbname;
     private $conn;
 
     function __construct(){

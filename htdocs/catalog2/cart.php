@@ -42,6 +42,7 @@ session_start();
     <h2 style="border-bottom: 2px solid; width: 15%; color: #ff7a7a; margin-bottom: 2%;">Cart</h2>
 <?php
 if(!empty($_POST) && !isset($_POST['purchase'])){
+    echo '<br>';
     foreach($_POST as $id=>$val){   
         #$key = array_search ($id, $_SESSION['prodid']);
         #var_dump($key);
