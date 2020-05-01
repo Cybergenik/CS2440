@@ -1,15 +1,23 @@
 <?php
-
 class Conn{
 
     private $conn;
 
     function __construct(){
+        $creds = Array();
+        $dbfile = fopen(__DIR__ ."/db.txt", "r") or die("Unable to open DB credentials file!");
+        $file = fread($dbfile, filesize(__DIR__ ."/db.txt")); 
+        $file = explode(PHP_EOL, $file);
+        foreach($file as $i){
+            $temp = explode('=', $i);
+            $creds += Array($temp[0] => $temp[1]);
+        }
+        fclose($dbfile);
         #region DB Credentials
-        $servername = "us-cdbr-iron-east-04.cleardb.net";
-        $username = "bc5c6e77231e1a";
-        $password = "a624b284fb3c60e";
-        $dbname = "heroku_d1a3b3905955062";
+        $servername = $creds['servername'];
+        $username = $creds['username'];
+        $password = $creds['password'];
+        $dbname = $creds['dbname'];
         #endregion
 
         $this->conn = new mysqli($servername, $username, $password, $dbname);
