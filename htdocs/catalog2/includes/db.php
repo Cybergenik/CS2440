@@ -14,10 +14,10 @@ class Conn{
         }
         fclose($dbfile);
         #region DB Credentials
-        $servername = $creds['servername'];
-        $username = $creds['username'];
-        $password = $creds['password'];
-        $dbname = $creds['dbname'];
+        $servername = getenv('servername');
+        $username = getenv('username');
+        $password = getenv('password');
+        $dbname = getenv('dbname');
         #endregion
 
         $this->conn = new mysqli($servername, $username, $password, $dbname);
